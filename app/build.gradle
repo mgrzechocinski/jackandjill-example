@@ -12,15 +12,25 @@ android {
         versionName "1.0"
     }
     buildTypes {
+        debug{
+            minifyEnabled true
+        }
         experimental.initWith(buildTypes.debug)
         experimental{
             // Enable the experimental Jack build tools.
+            minifyEnabled true
             useJack = true
         }
+        release.initWith(buildTypes.debug)
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
 }
 
